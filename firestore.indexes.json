@@ -1,0 +1,38 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "ordens",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "clienteId", "order": "ASCENDING" },
+        { "fieldPath": "numero", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "ordens",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "dataEmissao", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "ordens",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tecnicoId", "order": "ASCENDING" },
+        { "fieldPath": "dataEmissao", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "ordens",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "tecnicoId", "order": "ASCENDING" },
+        { "fieldPath": "dataEmissao", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

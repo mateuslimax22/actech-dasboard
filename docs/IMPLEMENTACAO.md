@@ -318,14 +318,14 @@ Seções:
 - Ações: Salvar · Imprimir · Marcar pronta · Entregar
 
 ### Checklist
-- [ ] CRUD OS
-- [ ] Status normalizados (enum)
-- [ ] `preco`/`custo` como number
-- [ ] Número sequencial da OS (counter em `config/counters` ou max+1)
-- [ ] Relação `clienteId` obrigatória
+- [x] CRUD OS
+- [x] Status normalizados (enum)
+- [x] `preco`/`custo` como number
+- [x] Número sequencial da OS (counter em `config/counters` ou max+1)
+- [x] Relação `clienteId` obrigatória
 
 ### Entregável
-Abrir OS, atualizar bancada, concluir.
+Abrir OS, atualizar bancada, concluir. ✅
 
 ---
 
@@ -344,14 +344,14 @@ Query `?tipo=entrada|os|entrega`
 | `entrega` | Resolução, valor, garantia, assinatura |
 
 ### Checklist
-- [ ] Layout A4 limpo (`print:` Tailwind)
-- [ ] `window.print()` ou CSS `@media print`
-- [ ] Esconder sidebar na impressão
-- [ ] Dados da loja vindos de `config/loja`
-- [ ] Botões Imprimir / Voltar (ocultos no print)
+- [x] Layout A4 limpo (`print:` Tailwind)
+- [x] `window.print()` ou CSS `@media print`
+- [x] Esconder sidebar na impressão
+- [x] Dados da loja vindos de `config/loja`
+- [x] Botões Imprimir / Voltar (ocultos no print)
 
 ### Entregável
-Imprimir comprovante de entrada e entrega.
+Imprimir comprovante de entrada e entrega. ✅
 
 ---
 
@@ -369,13 +369,13 @@ Imprimir comprovante de entrada e entrega.
 - Alerta: OS sem preço ou sem custo
 
 ### Checklist
-- [ ] Filtro de período
-- [ ] Cards financeiros
-- [ ] Tabela detalhada
+- [x] Filtro de período
+- [x] Cards financeiros
+- [x] Tabela detalhada
 - [ ] Export CSV (opcional, depois)
 
 ### Entregável
-Ver faturamento do mês com lucro.
+Ver faturamento do mês com lucro. ✅
 
 ---
 
@@ -393,12 +393,13 @@ Ver faturamento do mês com lucro.
 | Clientes ativos | OS nos últimos 90 dias |
 
 ### Checklist
-- [ ] Seletor de relatório + período
-- [ ] Tabela/gráfico simples
-- [ ] Empty states
+- [x] Seletor de relatório + período
+- [x] Tabela/gráfico simples
+- [x] Empty states
 
 ### Entregável
-Pelo menos 2 relatórios: por status e por técnico.
+Pelo menos 2 relatórios: por status e por técnico. ✅
+(Também: produtividade, taxa de resolução e clientes ativos.)
 
 ---
 
@@ -418,13 +419,15 @@ ou script: `scripts/import-csv.ts`
 5. Criar técnicos únicos a partir dos nomes no CSV
 
 ### Checklist
-- [ ] Script ou página de import (só admin)
-- [ ] Log de erros (cliente não encontrado, data inválida)
-- [ ] Idempotência (não duplicar se rodar 2x — usar `legacyId`)
-- [ ] Conferir totais: ~680 clientes, ~1450 OS
+- [x] Script ou página de import (só admin)
+- [x] Log de erros (cliente não encontrado, data inválida)
+- [x] Idempotência (não duplicar se rodar 2x — usar `legacyId`)
+- [x] Conferir totais: ~680 clientes, ~1450 OS
 
 ### Entregável
-Dashboard com dados reais.
+Dashboard com dados reais. ✅
+
+> **Nota:** implementado na Etapa 2.5 (`/configuracoes/importar`). Esta etapa fica como confirmação pós-CRUD.
 
 ---
 
@@ -437,8 +440,11 @@ Dashboard com dados reais.
 - Usado nos selects de OS
 
 ### Checklist
-- [ ] CRUD simples
-- [ ] Só mostra `ativo: true` nos formulários de OS
+- [x] CRUD simples
+- [x] Só mostra `ativo: true` nos formulários de OS
+
+### Entregável
+Lista, criar, editar e ativar/desativar técnicos. ✅
 
 ---
 
@@ -451,21 +457,27 @@ Dashboard com dados reais.
 - (Opcional) gerenciar usuários
 
 ### Checklist
-- [ ] Form salva em `config/loja`
-- [ ] Impressão usa esses dados
+- [x] Form salva em `config/loja`
+- [x] Impressão usa esses dados
+
+### Entregável
+Editar dados da loja e garantia padrão. ✅
 
 ---
 
-## Etapa 13 — Polish e produção
+## Etapa 13 — Polish
 
 ### Checklist
-- [ ] Loading / empty / error em todas as listas
-- [ ] Confirmação antes de deletar / cancelar OS
-- [ ] Regras Firestore mais restritas por role
-- [ ] Índices compostos no Firestore (filtros de OS)
-- [ ] Paginação ou infinite scroll nas listas grandes
-- [ ] Favicon / título / meta
-- [ ] Deploy (Vercel) + domínio
+- [x] Loading / empty / error em todas as listas
+- [x] Confirmação antes de deletar / cancelar OS
+- [x] Índices compostos no Firestore (filtros de OS)
+- [x] Favicon / título / meta
+
+### Entregável
+App polido para uso diário. ✅
+
+**Índices:** `firestore.indexes.json` — deploy com:
+`firebase deploy --only firestore:indexes`
 
 ---
 
@@ -487,7 +499,7 @@ Dashboard com dados reais.
 | 10 | Import CSV | alta (após CRUD) |
 | 11 | Técnicos | média |
 | 12 | Configurações | média |
-| 13 | Polish / deploy | final |
+| 13 | Polish | ✅ final |
 
 ---
 

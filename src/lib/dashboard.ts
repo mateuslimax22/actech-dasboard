@@ -28,6 +28,7 @@ export type DashboardMetrics = {
   osPagasMes: number;
   funil: Array<{ status: OrdemStatus; label: string; count: number }>;
   prontas: Ordem[];
+  ultimasOs: Ordem[];
   receitaPorDia: RevenueDay[];
   totalOrdens: number;
   isMesAtual: boolean;
@@ -169,19 +170,21 @@ export function computeDashboardMetrics(
   }
 
   for (const ordem of ordens) {
-    // Fila operacional atual (não depende do filtro)
-    if (abertos.has(ordem.status)) {
+    const emissao = toDate(ordem.dataEmissao);
+    const noMes = Boolean(emissao && isSameMonthRef(emissao, monthRef));
+
+    // KPIs de fila respeitam o mês (emissão no mês selecionado)
+    if (noMes && abertos.has(ordem.status)) {
       osAbertas += 1;
     }
-    if (ordem.status === "PRONTA") {
+    if (noMes && ordem.status === "PRONTA") {
       prontasRetirada += 1;
       prontas.push(ordem);
     }
 
-    const emissao = toDate(ordem.dataEmissao);
-    if (emissao && isSameMonthRef(emissao, monthRef)) {
+    if (noMes) {
       osEmitidasMes += 1;
-      if (isMesAtual && isSameDay(emissao, today)) {
+      if (isMesAtual && emissao && isSameDay(emissao, today)) {
         osHoje += 1;
       }
     }
@@ -206,6 +209,15 @@ export function computeDashboardMetrics(
       }
     }
   }
+
+  const ultimasOs = [...ordens]
+    .sort((a, b) => {
+      const da = toDate(a.dataEmissao)?.getTime() ?? 0;
+      const db = toDate(b.dataEmissao)?.getTime() ?? 0;
+      if (db !== da) return db - da;
+      return (b.numero || 0) - (a.numero || 0);
+    })
+    .slice(0, 5);
 
   prontas.sort((a, b) => {
     const da =
@@ -243,6 +255,7 @@ export function computeDashboardMetrics(
     osPagasMes,
     funil,
     prontas: prontas.slice(0, 8),
+    ultimasOs,
     receitaPorDia,
     totalOrdens: ordens.length,
     isMesAtual,

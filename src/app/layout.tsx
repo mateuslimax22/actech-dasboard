@@ -14,8 +14,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ACTech Dashboard",
-  description: "Gestão de clientes e ordens de serviço — manutenção de computadores",
+  title: {
+    default: "ACTech Dashboard",
+    template: "%s · ACTech",
+  },
+  description:
+    "Gestão de clientes e ordens de serviço — assistência técnica ACTech",
+  applicationName: "ACTech Dashboard",
+  keywords: [
+    "ACTech",
+    "ordens de serviço",
+    "assistência técnica",
+    "computadores",
+  ],
+  authors: [{ name: "ACTech" }],
+  creator: "ACTech",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
+  openGraph: {
+    title: "ACTech Dashboard",
+    description:
+      "Gestão de clientes e ordens de serviço — assistência técnica ACTech",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 const themeBootScript = `

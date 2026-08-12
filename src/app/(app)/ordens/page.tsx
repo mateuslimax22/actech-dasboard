@@ -1,10 +1,19 @@
+import { Suspense } from "react";
+import OrdensListClient from "./OrdensListClient";
+
+function Fallback() {
+  return (
+    <div className="space-y-4">
+      <div className="h-8 w-40 animate-pulse rounded bg-border/60" />
+      <div className="card-surface h-64 animate-pulse" />
+    </div>
+  );
+}
+
 export default function OrdensPage() {
   return (
-    <div className="space-y-2">
-      <h1 className="text-2xl font-semibold tracking-tight text-foreground">
-        Ordens
-      </h1>
-      <p className="text-sm text-secondary">Lista e gestão de OS — Etapa 6.</p>
-    </div>
+    <Suspense fallback={<Fallback />}>
+      <OrdensListClient />
+    </Suspense>
   );
 }

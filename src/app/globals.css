@@ -232,6 +232,39 @@ body {
     box-shadow: 0 0 0 3px var(--ring);
   }
 
+  /* Select: remove seta nativa e usa chevron alinhado ao tema */
+  select.input-field {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    padding-right: 2.5rem;
+    background-color: var(--background);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+  }
+
+  select.input-field:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2360A5FA' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  }
+
+  select.input-field:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  /* Firefox: remove setinha extra */
+  select.input-field::-moz-focus-inner {
+    border: 0;
+  }
+
+  select.input-field option {
+    background: var(--surface-elevated);
+    color: var(--foreground);
+  }
+
   .card-surface {
     border-radius: 0.875rem;
     border: 1px solid var(--border);
@@ -265,6 +298,47 @@ body {
     color: var(--alert-warning-fg);
   }
 
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background: var(--surface-elevated);
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .badge-primary {
+    border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+    background: color-mix(in srgb, var(--primary) 14%, var(--surface));
+    color: var(--primary-light);
+  }
+
+  .badge-success {
+    border-color: color-mix(in srgb, var(--success) 40%, var(--border));
+    background: color-mix(in srgb, var(--success) 14%, var(--surface));
+    color: var(--alert-success-fg);
+  }
+
+  .badge-warning {
+    border-color: color-mix(in srgb, var(--warning) 40%, var(--border));
+    background: color-mix(in srgb, var(--warning) 14%, var(--surface));
+    color: var(--alert-warning-fg);
+  }
+
+  .badge-error {
+    border-color: color-mix(in srgb, var(--error) 40%, var(--border));
+    background: color-mix(in srgb, var(--error) 14%, var(--surface));
+    color: var(--alert-error-fg);
+  }
+
+  .badge-muted {
+    color: var(--secondary);
+  }
+
   .spinner {
     height: 2rem;
     width: 2rem;
@@ -278,5 +352,34 @@ body {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #171717 !important;
+  }
+
+  body * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .print-sheet {
+    width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    color: #171717 !important;
   }
 }
