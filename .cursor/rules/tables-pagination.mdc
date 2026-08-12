@@ -1,0 +1,39 @@
+---
+description: Todas as tabelas/listas do app devem ter paginação
+globs: src/**/*.{tsx,ts}
+alwaysApply: false
+---
+
+# Paginação em tabelas
+
+**Regra do projeto:** toda tabela ou lista densa de dados precisa de paginação.
+
+## Onde se aplica
+
+- Clientes
+- Ordens de serviço
+- Técnicos
+- Relatórios / faturamento (quando for tabela)
+- Qualquer listagem futura com muitos registros
+
+## Padrão
+
+- Paginação **sempre visível** no rodapé da tabela (não exigir scroll da página)
+- Corpo da tabela com `overflow-y-auto`; header e paginação fixos no card
+- Controles: `Anterior` / `Próxima` + página atual
+- Tamanho de página padrão: **20** (ajustável se fizer sentido)
+- Mostrar resumo: `1–20 de 680`
+- Manter busca/filtros; ao mudar filtro, voltar para página 1
+- No mobile, controles devem continuar usáveis (touch)
+
+## Não fazer
+
+- Renderizar centenas/milhares de linhas de uma vez na UI
+- Infinite scroll no lugar de paginação (salvo pedido explícito)
+
+## Preferência técnica
+
+- Início: paginação **client-side** após fetch (ok até ~2k itens)
+- Depois: paginação **Firestore** (`limit` + `startAfter`) quando a lista crescer
+
+Use o componente compartilhado `src/components/Pagination.tsx` quando existir.

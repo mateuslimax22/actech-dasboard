@@ -1,0 +1,47 @@
+---
+description: Design system dark + azul ACTech — aplicar em UI e páginas
+globs: src/**/*.{tsx,css}
+alwaysApply: false
+---
+
+# ACTech UI Design System
+
+Antes de criar ou alterar UI, siga `docs/DESIGN.md`.
+
+## Tema (obrigatório)
+
+- **Dark theme** padrão
+- Azul `#3B82F6` só como **accent** (CTAs, links, ativos, foco) — sem excesso
+- Tokens CSS já definidos em `src/app/globals.css` — use classes Tailwind do tema (`bg-background`, `bg-surface`, `bg-surface-elevated`, `text-foreground`, `text-secondary`, `text-muted`, `border-border`, `bg-primary`, etc.)
+
+## Não fazer
+
+- Light theme
+- Gradientes exagerados / neon / glow em tudo
+- Cards dentro de cards
+- Bordas muito arredondadas (`rounded-full` em cards)
+- Sombras pesadas multi-camada
+- Template genérico “AI purple”
+
+## Fazer
+
+- Hierarquia tipográfica clara (Geist)
+- Espaçamento generoso
+- `.btn-primary`, `.btn-secondary`, `.input-field`, `.card-surface` quando couber
+- Empty / loading / error states
+- Mobile-first e touch targets ≥ 40px
+- Profundidade por tons: background → surface → elevated
+
+## Referência rápida de cores
+
+| Uso | Token / hex |
+|-----|-------------|
+| Fundo | `background` `#080B12` |
+| Card | `surface` `#0F1420` |
+| Header/elevated | `surface-elevated` `#151C2B` |
+| Borda | `border` `#222B3D` |
+| Texto | `foreground` `#F8FAFC` |
+| Apoio | `secondary` `#94A3B8` |
+| Muted | `muted` `#64748B` |
+| Primary | `primary` `#3B82F6` |
+| Success / Warning / Error | `#22C55E` / `#F59E0B` / `#EF4444` |
