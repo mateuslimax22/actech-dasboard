@@ -191,6 +191,17 @@ body {
     color: var(--muted);
   }
 
+  /* Chrome/Safari autofill: remove fundo azul/amarelo nativo */
+  .input-wrap__control:-webkit-autofill,
+  .input-wrap__control:-webkit-autofill:hover,
+  .input-wrap__control:-webkit-autofill:focus,
+  .input-wrap__control:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--foreground);
+    caret-color: var(--foreground);
+    box-shadow: 0 0 0 1000px var(--background) inset;
+    transition: background-color 99999s ease-out;
+  }
+
   .input-wrap__action {
     display: inline-flex;
     flex-shrink: 0;
@@ -230,6 +241,17 @@ body {
   .input-field:focus {
     border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
     box-shadow: 0 0 0 3px var(--ring);
+  }
+
+  .input-field:-webkit-autofill,
+  .input-field:-webkit-autofill:hover,
+  .input-field:-webkit-autofill:focus,
+  .input-field:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--foreground);
+    caret-color: var(--foreground);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 0 1000px var(--background) inset;
+    transition: background-color 99999s ease-out;
   }
 
   /* Select: remove seta nativa e usa chevron alinhado ao tema */
