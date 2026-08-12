@@ -19,6 +19,7 @@
   --alert-error-fg: #fecaca;
   --alert-success-fg: #bbf7d0;
   --alert-warning-fg: #fde68a;
+  color-scheme: dark;
 }
 
 [data-theme="light"] {
@@ -39,6 +40,7 @@
   --alert-error-fg: #991b1b;
   --alert-success-fg: #166534;
   --alert-warning-fg: #92400e;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -241,6 +243,54 @@ body {
   .input-field:focus {
     border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
     box-shadow: 0 0 0 3px var(--ring);
+  }
+
+  /* Ícone nativo de date/month — visível no dark */
+  input[type="date"].input-field,
+  input[type="month"].input-field,
+  input[type="datetime-local"].input-field,
+  input[type="time"].input-field {
+    color-scheme: inherit;
+  }
+
+  input[type="date"].input-field::-webkit-calendar-picker-indicator,
+  input[type="month"].input-field::-webkit-calendar-picker-indicator,
+  input[type="datetime-local"].input-field::-webkit-calendar-picker-indicator,
+  input[type="time"].input-field::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.75;
+  }
+
+  [data-theme="dark"]
+    input[type="date"].input-field::-webkit-calendar-picker-indicator,
+  [data-theme="dark"]
+    input[type="month"].input-field::-webkit-calendar-picker-indicator,
+  [data-theme="dark"]
+    input[type="datetime-local"].input-field::-webkit-calendar-picker-indicator,
+  [data-theme="dark"]
+    input[type="time"].input-field::-webkit-calendar-picker-indicator,
+  :root:not([data-theme="light"])
+    input[type="date"].input-field::-webkit-calendar-picker-indicator,
+  :root:not([data-theme="light"])
+    input[type="month"].input-field::-webkit-calendar-picker-indicator,
+  :root:not([data-theme="light"])
+    input[type="datetime-local"].input-field::-webkit-calendar-picker-indicator,
+  :root:not([data-theme="light"])
+    input[type="time"].input-field::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(1.35);
+    opacity: 0.85;
+  }
+
+  [data-theme="light"]
+    input[type="date"].input-field::-webkit-calendar-picker-indicator,
+  [data-theme="light"]
+    input[type="month"].input-field::-webkit-calendar-picker-indicator,
+  [data-theme="light"]
+    input[type="datetime-local"].input-field::-webkit-calendar-picker-indicator,
+  [data-theme="light"]
+    input[type="time"].input-field::-webkit-calendar-picker-indicator {
+    filter: none;
+    opacity: 0.7;
   }
 
   .input-field:-webkit-autofill,
